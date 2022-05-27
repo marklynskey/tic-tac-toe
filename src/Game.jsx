@@ -8,6 +8,14 @@ const Game = () => {
   const [stepNumber, setStepNumber] = useState(0);
   const [xIsNext, setxIsNext] = useState(true);
 
+  const current = history[stepNumber];
+  const winner = calculateWinner(current.squares);
+  const status = (
+    winner
+      ? 'Winner: ' + winner
+      : 'Next player: ' + (xIsNext ? 'X' : 'O')
+  );
+
   const handleClick = index => {
     const historyCopy = history.slice(0, stepNumber + 1); // When going to a previous step, we don't keep the future steps
     const current = historyCopy[historyCopy.length - 1];
@@ -30,26 +38,20 @@ const Game = () => {
     setxIsNext((step % 2) === 0);
   };
 
-  const current = history[stepNumber];
-  const winner = calculateWinner(current.squares);
-
-  // Componentise this?
-  const moves = history.map((step, move) => {
-    const desc = move ?
-      'Go to move #' + move :
-      'Go to game start';
-    
-    return (
-      <li key={move}>
-        <button onClick={() => jumpTo(move)}>{desc}</button>
-      </li>
-    );
-  });
-
-  const status = (
-    winner
-      ? 'Winner: ' + winner
-      : 'Next player: ' + (xIsNext ? 'X' : 'O')
+  const Moves = () => (
+    <ol>
+      {history.map((step, move) => {
+        const desc = move ?
+          'Go to move #' + move :
+          'Go to game start';
+        
+        return (
+          <li key={move}>
+            <button onClick={() => jumpTo(move)}>{desc}</button>
+          </li>
+        );
+      })}
+    </ol>
   );
 
   return (
@@ -62,7 +64,7 @@ const Game = () => {
       </div>
       <div className="game-info">
         <div>{status}</div>
-        <ol>{moves}</ol>
+        <Moves />
       </div>
     </div>
   );
