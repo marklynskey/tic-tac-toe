@@ -8,17 +8,17 @@ const Game = () => {
   const [stepNumber, setStepNumber] = useState(0);
   const [xIsNext, setxIsNext] = useState(true);
 
-  const handleClick = i => {
+  const handleClick = index => {
     const historyCopy = history.slice(0, stepNumber + 1); // When going to a previous step, we don't keep the future steps
     const current = historyCopy[historyCopy.length - 1];
     const squares = current.squares.slice();
     
     // If game is over or the square already has a value, do nothing
-    if (calculateWinner(squares) || squares[i]) {
+    if (calculateWinner(squares) || squares[index]) {
       return;
     }
 
-    squares[i] = xIsNext ? 'X' : 'O';
+    squares[index] = xIsNext ? 'X' : 'O';
 
     setHistory(historyCopy.concat([{ squares: squares }]));
     setStepNumber(history.length);

@@ -2,29 +2,29 @@ import Square from '../Square/Square';
 import './Board.css';
 
 const Board = props => {
-  const renderSquare = i => (
+  const GameSquare = ({ index }) => (
     <Square
-      value={props.squares[i]}
-      onClick={() => props.onClick(i)}
+      value={props.squares[index]}
+      onClick={() => props.onClick(index)}
     />
   );
 
   return (
     <div>
       <div className="board-row">
-        {renderSquare(0)}
-        {renderSquare(1)}
-        {renderSquare(2)}
+        <GameSquare index={0} />
+        <GameSquare index={1} />
+        <GameSquare index={2} />
       </div>
       <div className="board-row">
-        {renderSquare(3)}
-        {renderSquare(4)}
-        {renderSquare(5)}
+        <GameSquare index={3} />
+        <GameSquare index={4} />
+        <GameSquare index={5} />
       </div>
       <div className="board-row">
-        {renderSquare(6)}
-        {renderSquare(7)}
-        {renderSquare(8)}
+        <GameSquare index={6} />
+        <GameSquare index={7} />
+        <GameSquare index={8} />
       </div>
     </div>
   );
