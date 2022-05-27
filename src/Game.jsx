@@ -21,7 +21,7 @@ const Game = () => {
     squares[index] = xIsNext ? 'X' : 'O';
 
     setHistory(historyCopy.concat([{ squares: squares }]));
-    setStepNumber(history.length);
+    setStepNumber(historyCopy.length);
     setxIsNext(!xIsNext);
   }
 
