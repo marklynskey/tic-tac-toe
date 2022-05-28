@@ -1,9 +1,16 @@
-import './Square.css';
+import { Button, Text } from '@chakra-ui/react';
 
-const Square = props => (
-  <button className="square" onClick={props.onClick}>
-    {props.value}
-  </button>
+const Square = ({ onClick, value }) => (
+  <Button
+    variant="outline"
+    height="150px"
+    width="100%"
+    onClick={onClick}
+  >
+    <Text fontSize="5xl">
+      {value === 'O' ? '⭘' : value === 'X' ? '✕' : value }
+    </Text>
+  </Button>
 );
 
 export default Square;

@@ -1,7 +1,7 @@
 import Board from './components/Board/Board';
 import calculateWinner from './utils/calculateWinner';
+import { Box, Center, Heading, Stack } from '@chakra-ui/react';
 import { useState } from 'react';
-import './Game.css';
 
 const Status = ({ winner, xIsNext }) => (
   winner
@@ -56,18 +56,19 @@ const Game = () => {
   );
 
   return (
-    <div className="game">
-      <div className="game-board">
-        <Board 
+    <Center>
+      <Stack w={452} spacing={6} m={6}>
+        <Heading>Tic tac toe</Heading>
+        <Board
           squares={current.squares}
-          onClick={i => handleClick(i)}
+          onClick={index => handleClick(index)}
         />
-      </div>
-      <div className="game-info">
-        <Status winner={winner} xIsNext={xIsNext} />
-        <Moves />
-      </div>
-    </div>
+        <Box>
+          <Status winner={winner} xIsNext={xIsNext} />
+          <Moves />
+        </Box>
+      </Stack>
+    </Center>
   );
 };
 
