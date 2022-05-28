@@ -3,6 +3,12 @@ import calculateWinner from './utils/calculateWinner';
 import { useState } from 'react';
 import './Game.css';
 
+const Status = ({ winner, xIsNext }) => (
+  winner
+    ? 'Winner: ' + winner
+    : 'Next player: ' + (xIsNext ? 'X' : 'O')
+);
+
 const Game = () => {
   const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
   const [stepNumber, setStepNumber] = useState(0);
@@ -10,12 +16,7 @@ const Game = () => {
 
   const current = history[stepNumber];
   const winner = calculateWinner(current.squares);
-  const status = (
-    winner
-      ? 'Winner: ' + winner
-      : 'Next player: ' + (xIsNext ? 'X' : 'O')
-  );
-
+  
   const handleClick = index => {
     const historyCopy = history.slice(0, stepNumber + 1); // When going to a previous step, we don't keep the future steps
     const current = historyCopy[historyCopy.length - 1];
@@ -63,7 +64,7 @@ const Game = () => {
         />
       </div>
       <div className="game-info">
-        <div>{status}</div>
+        <Status winner={winner} xIsNext={xIsNext} />
         <Moves />
       </div>
     </div>
