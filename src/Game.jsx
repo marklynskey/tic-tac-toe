@@ -1,13 +1,8 @@
 import Board from './components/Board/Board';
+import Status from './components/Status/Status';
 import calculateWinner from './utils/calculateWinner';
 import { Box, Center, Heading, Stack } from '@chakra-ui/react';
-import { useState } from 'react';
-
-const Status = ({ winner, xIsNext }) => (
-  winner
-    ? 'Winner: ' + winner
-    : 'Next player: ' + (xIsNext ? 'X' : 'O')
-);
+import { useState } from 'react'
 
 const Game = () => {
   const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
@@ -59,12 +54,12 @@ const Game = () => {
     <Center>
       <Stack w={452} spacing={6} m={6}>
         <Heading>Tic tac toe</Heading>
+        <Status winner={winner} xIsNext={xIsNext} />
         <Board
           squares={current.squares}
           onClick={index => handleClick(index)}
         />
         <Box>
-          <Status winner={winner} xIsNext={xIsNext} />
           <Moves />
         </Box>
       </Stack>
