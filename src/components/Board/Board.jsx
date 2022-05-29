@@ -1,5 +1,5 @@
-import Square from '../Square/Square';
-import { Grid, GridItem } from '@chakra-ui/react';
+import Square from "../Square/Square";
+import { Grid, GridItem } from "@chakra-ui/react";
 
 const Board = ({ colors, onClick, squares }) => {
   const GameSquare = ({ index }) => (
