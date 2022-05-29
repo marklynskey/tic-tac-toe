@@ -2,7 +2,7 @@ import Board from './components/Board/Board';
 import ColorPicker from './components/ColorPicker/ColorPicker';
 import Status from './components/Status/Status';
 import calculateWinner from './utils/calculateWinner';
-import { Center, Heading, Stack } from '@chakra-ui/react';
+import { Button, Center, Heading, Stack } from '@chakra-ui/react';
 import { useState } from 'react'
 
 const Game = () => {
@@ -32,9 +32,17 @@ const Game = () => {
     setxIsNext(!xIsNext);
   }
 
+  const resetGame = () => {
+    setHistory([{ squares: Array(9).fill(null) }]);
+    setStepNumber(0);
+    setxIsNext(true);
+    setXColor('pink');
+    setOColor('blue');
+  };
+
   return (
     <Center>
-      <Stack w={454} spacing={12} m={6}>
+      <Stack w={454} spacing={8} m={6}>
         <Heading>Tic tac toe</Heading>
         <Stack direction="row" spacing={2}>
           <ColorPicker
@@ -53,11 +61,21 @@ const Game = () => {
           onClick={index => handleClick(index)}
           colors={{ o: oColor, x: xColor }}
         />
-         <Status
-          winner={winner}
-          xIsNext={xIsNext}
-          colors={{ o: oColor, x: xColor }}
-        />
+        <Stack spacing={4}>
+          <Status
+            winner={winner}
+            xIsNext={xIsNext}
+            colors={{ o: oColor, x: xColor }}
+          />
+          <Button
+            variant="outline"
+            type="reset"
+            isDisabled={history.length < 2}
+            onClick={resetGame}
+          >
+            Reset
+          </Button>
+        </Stack>
       </Stack>
     </Center>
   );
