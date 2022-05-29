@@ -1,7 +1,7 @@
 import Board from './components/Board/Board';
 import Status from './components/Status/Status';
 import calculateWinner from './utils/calculateWinner';
-import { Box, Center, Heading, Stack } from '@chakra-ui/react';
+import { Center, Heading, Stack } from '@chakra-ui/react';
 import { useState } from 'react'
 
 const Game = () => {
@@ -29,27 +29,6 @@ const Game = () => {
     setxIsNext(!xIsNext);
   }
 
-  const jumpTo = step => {
-    setStepNumber(step);
-    setxIsNext((step % 2) === 0);
-  };
-
-  const Moves = () => (
-    <ol>
-      {history.map((step, move) => {
-        const desc = move ?
-          'Go to move #' + move :
-          'Go to game start';
-        
-        return (
-          <li key={move}>
-            <button onClick={() => jumpTo(move)}>{desc}</button>
-          </li>
-        );
-      })}
-    </ol>
-  );
-
   return (
     <Center>
       <Stack w={452} spacing={6} m={6}>
@@ -59,9 +38,6 @@ const Game = () => {
           squares={current.squares}
           onClick={index => handleClick(index)}
         />
-        <Box>
-          <Moves />
-        </Box>
       </Stack>
     </Center>
   );
