@@ -34,7 +34,7 @@ const Game = () => {
 
   return (
     <Center>
-      <Stack w={454} spacing={6} m={6}>
+      <Stack w={454} spacing={12} m={6}>
         <Heading>Tic tac toe</Heading>
         <Stack direction="row" spacing={2}>
           <ColorPicker
@@ -53,7 +53,11 @@ const Game = () => {
           onClick={index => handleClick(index)}
           colors={{ o: oColor, x: xColor }}
         />
-         <Status winner={winner} xIsNext={xIsNext} />
+         <Status
+          winner={winner}
+          xIsNext={xIsNext}
+          colors={{ o: oColor, x: xColor }}
+        />
       </Stack>
     </Center>
   );

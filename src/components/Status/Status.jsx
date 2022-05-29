@@ -1,9 +1,11 @@
 import { Alert, AlertTitle, AlertIcon } from '@chakra-ui/react';
 
-const Status = ({ winner, xIsNext }) => (
+const Status = ({ colors, winner, xIsNext }) => (
   <Alert
     status={winner ? 'success' : 'info'}
-    variant="left-accent"
+    variant={winner ? 'solid' : 'subtle'}
+    colorScheme={winner === 'O' ? colors.o : winner === 'X' ? colors.x : xIsNext ? colors.x : colors.o}
+    borderRadius="md"
   >
     <AlertIcon />
     <AlertTitle>

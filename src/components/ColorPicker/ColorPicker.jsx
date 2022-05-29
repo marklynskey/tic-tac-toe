@@ -27,7 +27,7 @@ const ColorPicker = ({ label, onChange, value }) => {
           <option value={color}>{color.charAt(0).toUpperCase() + color.slice(1)}</option>
         ))}
       </Select>
-      <Button colorScheme={value} h={2} aria-hidden="true" pointerEvents="none" tabIndex="-1" />
+      <Button as="div" h={2} colorScheme={value} pointerEvents="none" />
     </Stack>
   );
 };
