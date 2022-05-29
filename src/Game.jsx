@@ -36,8 +36,6 @@ const Game = ({ as }) => {
     setHistory([{ squares: Array(9).fill(null) }]);
     setStepNumber(0);
     setxIsNext(true);
-    setXColor("pink");
-    setOColor("blue");
   };
 
   return (
