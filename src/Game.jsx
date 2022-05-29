@@ -51,6 +51,7 @@ const Game = () => {
         <Board
           squares={current.squares}
           onClick={index => handleClick(index)}
+          colors={{ o: oColor, x: xColor }}
         />
          <Status winner={winner} xIsNext={xIsNext} />
       </Stack>

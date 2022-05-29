@@ -1,11 +1,11 @@
 import { Button, Text } from '@chakra-ui/react';
 
-const Square = ({ onClick, value }) => (
+const Square = ({ colors, onClick, value }) => (
   <Button
     height="150px"
     width="100%"
     onClick={onClick}
-    colorScheme={value === 'O' ? 'blue' : value === 'X' ? 'pink' : 'gray'}
+    colorScheme={value === 'O' ? colors.o : value === 'X' ? colors.x : 'gray'}
   >
     <Text fontSize="5xl">
       {value === 'O' ? '⭘' : value === 'X' ? '✕' : value }

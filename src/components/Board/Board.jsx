@@ -1,12 +1,13 @@
 import Square from '../Square/Square';
 import { Grid, GridItem } from '@chakra-ui/react';
 
-const Board = props => {
+const Board = ({ colors, onClick, squares }) => {
   const GameSquare = ({ index }) => (
     <GridItem>
       <Square
-        value={props.squares[index]}
-        onClick={() => props.onClick(index)}
+        value={squares[index]}
+        onClick={() => onClick(index)}
+        colors={colors}
       />
     </GridItem>
   );
