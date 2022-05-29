@@ -1,4 +1,5 @@
 import Board from './components/Board/Board';
+import ColorPicker from './components/ColorPicker/ColorPicker';
 import Status from './components/Status/Status';
 import calculateWinner from './utils/calculateWinner';
 import { Center, Heading, Stack } from '@chakra-ui/react';
@@ -8,6 +9,8 @@ const Game = () => {
   const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
   const [stepNumber, setStepNumber] = useState(0);
   const [xIsNext, setxIsNext] = useState(true);
+  const [xColor, setXColor] = useState('pink');
+  const [oColor, setOColor] = useState('blue');
 
   const current = history[stepNumber];
   const winner = calculateWinner(current.squares);
@@ -31,13 +34,25 @@ const Game = () => {
 
   return (
     <Center>
-      <Stack w={452} spacing={6} m={6}>
+      <Stack w={454} spacing={6} m={6}>
         <Heading>Tic tac toe</Heading>
-        <Status winner={winner} xIsNext={xIsNext} />
+        <Stack direction="row" spacing={2}>
+          <ColorPicker
+            label="X color"
+            value={xColor}
+            onChange={event => setXColor(event.target.value)}
+          />
+          <ColorPicker
+            label="O Color"
+            value={oColor}
+            onChange={event => setOColor(event.target.value)}
+          />
+        </Stack>
         <Board
           squares={current.squares}
           onClick={index => handleClick(index)}
         />
+         <Status winner={winner} xIsNext={xIsNext} />
       </Stack>
     </Center>
   );

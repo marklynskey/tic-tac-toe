@@ -15,9 +15,7 @@ const Board = props => {
     <Grid
       templateRows="repeat(3, 1fr)"
       templateColumns="repeat(3, 1fr)"
-      gap={1}
-      //m={6}
-      //width={146}
+      gap={2}
     >
       <GameSquare index={0} />
       <GameSquare index={1} />
